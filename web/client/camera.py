@@ -57,7 +57,6 @@ def gen_frames():  # generate frame by frame from camera
     while True:
         success, frame = cam.read() 
         if success:
-            print(capture)
             if(capture):
                 capture=0
                 now = datetime.datetime.now()
