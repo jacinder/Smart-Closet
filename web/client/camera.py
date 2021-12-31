@@ -64,7 +64,7 @@ def gen_frames():  # generate frame by frame from camera
                 cv2.imwrite(p, frame)
                 api = fashion_tools(p, saved)
                 image_ = api.get_dress()
-                cv2.imwrite("static/images/c1/{}.png".format(str(now).replace(":", '')), image_)
+                cv2.imwrite("static/images/c2/{}.png".format(str(now).replace(":", '')), image_)
                 break
             try:
                 ret, buffer = cv2.imencode('.jpg', cv2.flip(frame,1))

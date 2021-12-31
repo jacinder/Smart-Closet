@@ -35,7 +35,7 @@ def camera_test():
 def video_feed():
     return Response(camera.gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-@application.route('/requests',methods=['POST','GET'])
+@application.route('/',methods=['POST','GET'])
 def tasks():
     if request.method == 'POST':
         if request.form.get('click') == 'Capture':
