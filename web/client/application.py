@@ -92,19 +92,24 @@ def add_clothes(isUpload):
         cv2.imwrite(img_path, frame)
 
     pred, label = cc.classifier(img_path)
-    category = clothOps.get_clothes_info(label)
+    category = clothOps.get_category(label)
     print(pred, label)
     
-    category = cagetory[2:]
     position = clothOps.search_pos_by_label(category)
     if position == -1:
         position = "지정 카테고리가 없습니다!"
+        position = 2
     print(category, position)
 
-    return render_template('add_clothes.html', results={"pred": pred,
-                                                        "recommand_pos": position,
+    box_path = "static/images/box/box{pos}/{name}.jpg".format(pos=position, name=nickname)
+    cv2.imwrite(box_path, frame)
+    clothOps.append_cloth(str(position), str(category), nickname)
+
+    return render_template('add_clothes.html', results={"nickname": nickname,
                                                         "label": label,
-                                                        "clothes_class": category,
+                                                        "category": category,
+                                                        "pred": pred,
+                                                        "recommand_pos": position,
                                                         "img_path": img_path})
 
 
@@ -135,6 +140,7 @@ def ootd_whichone():
                                     "img_path": img_path,
                                     "img_path_segmen": img_path_segmen})
 
+
 #옷 추가
 @application.route("/box/<int:box_num>", methods=['GET']) #각 closet_num에 해당하는 번호의 수납함으로 이동
 def box(box_num):
@@ -142,7 +148,8 @@ def box(box_num):
         json_data = json.load(cloth_json) #cloth_json 불러옴
         box_data = json_data["closet"][box_num-1]  #closet_num번 수납함 데이터 불러옴
         box_data['box_num']=str(box_num)
-    return render_template("box.html",result=box_data)
+    return render_template("box.html", result=box_data)
+
 
 @application.route("/<int:box_num>/<cloth_name>", methods=['GET'])
 def cloth_detail(box_num, cloth_name):
@@ -164,6 +171,8 @@ def cloth_detail(box_num, cloth_name):
         # clothes.json의 clothes_management에서 해당하는 카테고리의 세탁정보 받아옴
         current_cloth['management_info'] = json_data["clothes_management"][0][current_category]
     return render_template("cloth_detail.html", result=current_cloth)
+
+
 
 # @application.route('/requests/<isOOTD>', methods=['POST'])
 # def tasks(isOOTD=False):
