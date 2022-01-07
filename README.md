@@ -11,6 +11,10 @@
 
 #### 4.Download Pretrained Model
 [DOWNLOAD MODELS](https://drive.google.com/drive/folders/13wFP4lOj3gv50_-7Sqlu8kxj1-27u2Nc?usp=sharing)
+- c2c_model.h5
+- c2c_extraction_model.h5
+- fashion_segmentation.h5<br>
+&nbsp;&nbsp;&nbsp;from [Github: anish9/Fashion-AI-segmentation](https://github.com/anish9/Fashion-AI-segmentation)
 
 #### 5.Place the downloaded h5 files in the web/client/models path.
 <img src='https://user-images.githubusercontent.com/47296316/148478419-ce5b46db-09b5-4b30-ae23-47699cb0c205.jpg' width='500' height='150'>
