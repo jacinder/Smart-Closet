@@ -1,5 +1,6 @@
 # smart-closet
-[옷 정리해조's NOTION](https://www.notion.so/2021ktintern7/KT-close-to-closet-92a58c4e687640d881aa689fe4d371d5)
+[옷 정리해조's NOTION](https://www.notion.so/2021ktintern7/KT-close-to-closet-92a58c4e687640d881aa689fe4d371d5)<br>
+<img src='https://user-images.githubusercontent.com/47296316/148484500-67e2eb77-596b-4105-8582-40e4e558dee0.jpg' width='900' height='500'>
 
 ## Get Started
 #### 1.Git Clone
